@@ -6,28 +6,61 @@ using UnityEngine.UI;
 public class _UiFeedback : MonoBehaviour
 {
     private Image circle;
+    private bool docircleAnimaiton;
+    [HideInInspector] public float time = 3f;
+    private Raycast a;
+    private float time_;
     private void Awake()
     {
         circle = GameObject.Find("CircleFeedback").GetComponent<Image>();
+        a = FindObjectOfType<Raycast>();
     }
-    private void FixedUpdate()
+    private void Start()
     {
-        if (Input.GetMouseButtonDown(1))
+        // bools
+        circle.enabled = true;
+        docircleAnimaiton = true;
+
+        // floats
+        time_ = time;
+    }
+    private void Update()
+    {
+        if(docircleAnimaiton)
         {
-            StartCoroutine(CircleAnimation(2));
+            CircleAnimation();
         }
     }
-    public IEnumerator CircleAnimation(float time)
+    public void CircleAnimation()
     {
-        float tmpTime = time;
-        while (tmpTime > 0)
+        time -= Time.deltaTime;
+        if (time > 0 && !a.pressing)
         {
-            Remap(circle.fillAmount, time-=Time.deltaTime, 0, 1, 0);
+            float d = Remap(time, 0, time_, 0, 1);
+            Debug.Log("This is d value " + time + "this is the map functino value: "+ d);
+            circle.fillAmount = d;
         }
-        yield return new WaitForSeconds(time);
+        else
+        {
+            circle.fillAmount = 0;
+            docircleAnimaiton = false;
+            circle.enabled = false;
+            this.gameObject.SetActive(false);
+        }
+        
     }
-    public static float Remap(float value, float from1, float to1, float from2, float to2)
+    public static float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
     {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        var fromAbs = from - fromMin;
+        var fromMaxAbs = fromMax - fromMin;
+
+        var normal = fromAbs / fromMaxAbs;
+
+        var toMaxAbs = toMax - toMin;
+        var toAbs = toMaxAbs * normal;
+
+        var to = toAbs + toMin;
+
+        return to;
     }
 }

@@ -9,9 +9,15 @@ public class Raycast : MonoBehaviour
 
     private Camera cam;
 
-    private void FixedUpdate()
+    private bool pressing;
+    private void Awake()
     {
-        
+        pressing = false;
+    }
+
+    private void Update()
+    {
+        Debug.Log(pressing);
     }
 
     void DoRaycast()
@@ -20,7 +26,12 @@ public class Raycast : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
-                //
+                pressing = true;
+                
+            }
+            if(Input.GetMouseButtonUp(0))
+            {
+                pressing = false;
             }
         }
     }
