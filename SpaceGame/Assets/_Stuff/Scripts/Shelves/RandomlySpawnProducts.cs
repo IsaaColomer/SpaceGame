@@ -21,7 +21,7 @@ public class RandomlySpawnProducts : MonoBehaviour
         {
             if(Random.Range(0,2) == 1)
             {
-                Instantiate(products[Random.Range(0, products.Count+1)], possibleSpawns[i].transform.position, Quaternion.identity, possibleSpawns[i].transform);
+                Instantiate(products[Random.Range(0, products.Count)], possibleSpawns[i].transform.position, Quaternion.identity, possibleSpawns[i].transform);
             }
         }
     }

@@ -10676,6 +10676,7 @@ GameObject:
   - component: {fileID: 6357567464388507534}
   - component: {fileID: 7862322051635417437}
   - component: {fileID: 7613939774998754846}
+  - component: {fileID: 6054217865359341682}
   m_Layer: 6
   m_Name: PlayerCart
   m_TagString: Untagged
@@ -10711,7 +10712,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8325475723143421870}
   serializedVersion: 4
-  m_Mass: 950
+  m_Mass: 850
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -10729,7 +10730,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &7613939774998754846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10766,7 +10767,7 @@ MonoBehaviour:
   RRWTireSkid: {fileID: 4227291288567765530}
   useUI: 0
   carSpeedText: {fileID: 0}
-  useSounds: 0
+  useSounds: 1
   carEngineSound: {fileID: 0}
   tireScreechSound: {fileID: 0}
   useTouchControls: 0
@@ -10778,6 +10779,18 @@ MonoBehaviour:
   carSpeed: 0
   isDrifting: 0
   isTractionLocked: 0
+--- !u!114 &6054217865359341682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325475723143421870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fcedccb0a68c447afb06c2253c9213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8710900126104433165
 GameObject:
   m_ObjectHideFlags: 0
