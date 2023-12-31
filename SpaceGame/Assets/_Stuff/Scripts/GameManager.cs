@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using TMPro;
 
 [Serializable]
 public class ShelfAndProduct
@@ -18,7 +19,10 @@ public class GameManager : MonoBehaviour
     private List<GameObject> allItemCollect = new List<GameObject>();
     private List<GameObject> selectedProductsToCollect = new List<GameObject>();
     private List<GameObject> selectedShelves = new List<GameObject>();
-    private List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
+    public List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
+
+    private TextMeshProUGUI text;
+
     [Header("PRODUCTS")]
     public float distanceToActivateOutline = 5f;
     [Header("DEBUG ONLY")]
@@ -51,7 +55,7 @@ public class GameManager : MonoBehaviour
                 }
             }            
         }
-
+        text = FindObjectOfType<TextMeshProUGUI>();
         player = GameObject.Find("PlayerKart");
     }
 
@@ -127,6 +131,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         LookForCloseProducts();
+        text.text = selectedProductsToCollect.Count.ToString();
     }
     public void LookForCloseProducts()
     {
@@ -179,7 +184,9 @@ public class GameManager : MonoBehaviour
                 ret = shelfAndProducts[i].product;
             }
         }
-        Debug.Log(ret.name);
+        if(ret != null)
+            Debug.Log(ret.name);
+
         return ret;
     }
 
@@ -190,6 +197,7 @@ public class GameManager : MonoBehaviour
             if (shelfAndProducts[i].product == g)
             {
                 shelfAndProducts[i].product = null;
+                shelfAndProducts[i].shelf = null;
             }
         }
         for(int j = 0;  j < selectedProductsToCollect.Count; ++j)
