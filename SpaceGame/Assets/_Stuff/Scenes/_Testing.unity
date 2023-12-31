@@ -1524,8 +1524,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -2246,11 +2246,11 @@ MonoBehaviour:
   CameraDistance: 5.24
   CameraCollisionFilter:
     serializedVersion: 2
-    m_Bits: 319
+    m_Bits: 447
   IgnoreTag: 
-  CameraRadius: 0.377
-  DampingIntoCollision: 3.22
-  DampingFromCollision: 3.27
+  CameraRadius: 0.833
+  DampingIntoCollision: 1.09
+  DampingFromCollision: 4.08
 --- !u!114 &1556492623
 MonoBehaviour:
   m_ObjectHideFlags: 3

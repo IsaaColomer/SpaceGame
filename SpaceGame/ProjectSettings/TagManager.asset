@@ -9,6 +9,9 @@ TagManager:
   - Shelf
   - CollectItemHere
   - Product
+  - Red
+  - Blue
+  - Green
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - OnlyForCamera
   - PostProcessing
   - 
   - 
