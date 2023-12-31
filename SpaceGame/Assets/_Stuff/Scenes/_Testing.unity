@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44648796, g: 0.49640262, b: 0.57479304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1395,6 +1395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velToKill
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505477437516030259, guid: 6707fb280d88ef44693ce010c39c2959,
+        type: 3}
+      propertyPath: minDistanceForArguing
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3157,7 +3162,7 @@ PrefabInstance:
     - target: {fileID: 4437585258580747582, guid: 6707fb280d88ef44693ce010c39c2959,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.47
+      value: 2.214
       objectReference: {fileID: 0}
     - target: {fileID: 4437585258580747582, guid: 6707fb280d88ef44693ce010c39c2959,
         type: 3}
@@ -3167,7 +3172,7 @@ PrefabInstance:
     - target: {fileID: 4437585258580747582, guid: 6707fb280d88ef44693ce010c39c2959,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.91
+      value: -7.202
       objectReference: {fileID: 0}
     - target: {fileID: 4437585258580747582, guid: 6707fb280d88ef44693ce010c39c2959,
         type: 3}
@@ -3208,6 +3213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velToKill
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505477437516030259, guid: 6707fb280d88ef44693ce010c39c2959,
+        type: 3}
+      propertyPath: minDistanceForArguing
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3281,6 +3291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velToKill
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505477437516030259, guid: 6707fb280d88ef44693ce010c39c2959,
+        type: 3}
+      propertyPath: minDistanceForArguing
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3432,6 +3447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: velToKill
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505477437516030259, guid: 6707fb280d88ef44693ce010c39c2959,
+        type: 3}
+      propertyPath: minDistanceForArguing
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

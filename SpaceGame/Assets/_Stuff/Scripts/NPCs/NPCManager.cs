@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using System.Linq;
 public class NPCManager : MonoBehaviour
 {
     private Animator anim;
@@ -12,6 +12,11 @@ public class NPCManager : MonoBehaviour
     // only for killing Animation
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin perlinNoise;
+
+    //
+
+    public float minDistanceForArguing = 2f;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -20,6 +25,7 @@ public class NPCManager : MonoBehaviour
     }
     private void Start()
     {
+        DecideIfArgue();
         ResetIntensity();
     }
     public void KillNPC()
@@ -32,6 +38,7 @@ public class NPCManager : MonoBehaviour
         killFx.Play();
         ShakeCamera(4f, .5f);
     }
+    #region Shake Camera
     public void ShakeCamera(float intensity, float shakeTime)
     {
         perlinNoise.m_AmplitudeGain = intensity;
@@ -46,8 +53,48 @@ public class NPCManager : MonoBehaviour
     {
         perlinNoise.m_AmplitudeGain = 0f;
     }
+    #endregion
     public void DestroyNPC()
     {
         Destroy(this.gameObject);
+    }
+    public void DecideIfArgue()
+    {
+        List<GameObject> go = GameObject.FindGameObjectsWithTag("NPC").ToList();
+        foreach (GameObject tmp in go)
+        {
+            if(tmp != this.gameObject)
+            {
+                if(Vector3.Distance(this.gameObject.transform.position, tmp.transform.position) < minDistanceForArguing)
+                {
+                    anim.SetBool("isSomeOneClose", true);
+                    transform.LookAt(tmp.transform.position);
+                }
+                else
+                {
+                    anim.SetBool("isSomeOneClose", false);
+                }
+            }
+        }
+    }
+
+
+    private void Update()
+    {
+        List<GameObject> go = GameObject.FindGameObjectsWithTag("NPC").ToList();
+        foreach (GameObject tmp in go)
+        {
+            if (tmp != this.gameObject)
+            {
+                if(Vector3.Distance(this.gameObject.transform.position, tmp.transform.position) < minDistanceForArguing)
+                {
+                    Debug.DrawLine(this.gameObject.transform.position, tmp.transform.position, Color.green);
+                }
+                else
+                {
+                    Debug.DrawLine(this.gameObject.transform.position, tmp.transform.position, Color.red);
+                }                    
+            }
+        }
     }
 }
