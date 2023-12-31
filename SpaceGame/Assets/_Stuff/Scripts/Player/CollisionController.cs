@@ -60,6 +60,12 @@ public class CollisionController : MonoBehaviour
             if(collision.gameObject.GetComponent<NPCManager>())
                 collision.gameObject.GetComponent<NPCManager>().KillNPC();
         }        
+        else
+        {
+            if(rb.velocity.magnitude > 1f)
+                gameManager.ShakeCamera(3f, .5f);
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Cinemachine;
 
 [Serializable]
 public class ShelfAndProduct
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
     private int itemCounterForSpawn = 0;
     [HideInInspector] public int collectedItemsTrueAmmount = 0;
     [HideInInspector] public int collectedItemsAmmount = 0;
+
+    private CinemachineVirtualCamera virtualCamera;
+    private CinemachineBasicMultiChannelPerlin perlinNoise;
     private void Awake()
     {
         allShelves = GameObject.FindGameObjectsWithTag("Shelf").ToList();
@@ -55,6 +59,8 @@ public class GameManager : MonoBehaviour
             }            
         }
         player = GameObject.Find("PlayerKart");
+        virtualCamera = GameObject.Find("PlayerVirtualCamera").GetComponent<CinemachineVirtualCamera>();
+        perlinNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     private void Start()
@@ -214,4 +220,20 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #region Shake Camera
+    public void ShakeCamera(float intensity, float shakeTime)
+    {
+        perlinNoise.m_AmplitudeGain = intensity;
+        StartCoroutine(WaitTime(shakeTime));
+    }
+    IEnumerator WaitTime(float shakeTime)
+    {
+        yield return new WaitForSeconds(shakeTime);
+        ResetIntensity();
+    }
+    private void ResetIntensity()
+    {
+        perlinNoise.m_AmplitudeGain = 0f;
+    }
+    #endregion
 }
