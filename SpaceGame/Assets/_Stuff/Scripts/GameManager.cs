@@ -195,8 +195,6 @@ public class GameManager : MonoBehaviour
                 ret = shelfAndProducts[i].product;
             }
         }
-        if(ret != null)
-            Debug.Log(ret.name);
 
         return ret;
     }

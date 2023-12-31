@@ -9,7 +9,9 @@ public class CollisionController : MonoBehaviour
     
     private bool isPressingIneractKey = false;
     private bool isInTrigger = false;
-
+    public float explosionShelfRadius;
+    public float explosionForce;
+    public float cameraShakeMult;
     [SerializeField] private GameObject tmp;
 
     private void Awake()
@@ -62,10 +64,22 @@ public class CollisionController : MonoBehaviour
         }        
         else
         {
-            if(rb.velocity.magnitude > 1f)
-                gameManager.ShakeCamera(3f, .5f);
-        }
+            if(collision.gameObject.CompareTag("Shelf"))
+            {
+                if (rb.velocity.magnitude > 1f)
+                    gameManager.ShakeCamera(cameraShakeMult*rb.velocity.magnitude, .5f);
 
+                Collider[] coll = Physics.OverlapSphere(collision.contacts[0].point, explosionShelfRadius);
+                foreach(Collider col in coll)
+                {
+                    Rigidbody r = col.GetComponent<Rigidbody>();
+                    if(r != null)
+                    {
+                        r.AddExplosionForce(explosionForce*rb.velocity.magnitude, collision.contacts[0].point, explosionShelfRadius);
+                    }
+                }
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
