@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SpawnPosition
   - NPC
+  - Shelf
+  - CollectItemHere
+  - Product
   layers:
   - Default
   - TransparentFX

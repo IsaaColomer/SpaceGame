@@ -935,6 +935,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a9ccc778e5d0e44d940ca75289d65d2, type: 3}
+--- !u!1 &611043503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611043504}
+  - component: {fileID: 611043505}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &611043504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611043503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &611043505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611043503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b0aa379831f7647b6a5cdfffa7931b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  products:
+  - {fileID: 7068399233604147542, guid: e491666edc6759e448c7e44c6cca012a, type: 3}
+  - {fileID: 1194802749932750939, guid: 5548bf83459f0b542880d23c3f210638, type: 3}
+  - {fileID: 4968168518604899287, guid: 7bed8c566b834f64d896de455eba4bd6, type: 3}
+  - {fileID: 469265919480392520, guid: 1d5429530c1f292459cdd8fae9ac4f3e, type: 3}
+  - {fileID: 5075193779577675251, guid: bfe552190756d094f82c486f4690e24d, type: 3}
+  - {fileID: 1961465330170583945, guid: 8ad44dcae4e973e4f942212155d2663b, type: 3}
+  allShelves: []
+  allItemCollect: []
+  selectedProductsToCollect: []
+  selectedShelves: []
+  shelfAndProducts: []
+  shelves: []
+  product: []
+  maxItemsToCollect: 8
+  collectedItemsTrueAmmount: 0
+  collectedItemsAmmount: 0
 --- !u!1 &657213962
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,3 +4012,4 @@ SceneRoots:
   - {fileID: 1826623133}
   - {fileID: 1818555317}
   - {fileID: 1814213633}
+  - {fileID: 611043504}

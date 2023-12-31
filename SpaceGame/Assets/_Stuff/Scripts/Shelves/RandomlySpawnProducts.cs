@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class RandomlySpawnProducts : MonoBehaviour
 {
-    public List<GameObject> products = new List<GameObject>();
     private List<GameObject> possibleSpawns = new List<GameObject>();
+    private GameManager gameManager;
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     private void Start()
     {
@@ -21,7 +25,7 @@ public class RandomlySpawnProducts : MonoBehaviour
         {
             if(Random.Range(0,2) == 1)
             {
-                Instantiate(products[Random.Range(0, products.Count)], possibleSpawns[i].transform.position, Quaternion.identity, possibleSpawns[i].transform);
+                Instantiate(gameManager.products[Random.Range(0, gameManager.products.Count)], possibleSpawns[i].transform.position, Quaternion.identity, possibleSpawns[i].transform);
             }
         }
     }
