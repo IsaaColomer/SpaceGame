@@ -65,13 +65,9 @@ public class CollisionController : MonoBehaviour
     {
         if(other.CompareTag("CollectItemHere"))
         {
-            Debug.Log("This is the alleged shelf " + other.transform.name);
-
             if (gameManager.GetRelatedProduct(other.transform.parent) != null)
             {
-                Debug.Log("This is the alleged shelf " + other.transform.name);
                 tmp = gameManager.GetRelatedProduct(other.transform.parent);
-                Debug.Log("This is the alleged product name " + tmp.name);
             }
         }
     }

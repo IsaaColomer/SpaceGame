@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
-using TMPro;
 
 [Serializable]
 public class ShelfAndProduct
@@ -11,6 +10,7 @@ public class ShelfAndProduct
     public string name = "_";
     public GameObject shelf;
     public GameObject product;
+    public GameObject ground;
 }
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     private List<GameObject> selectedShelves = new List<GameObject>();
     public List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
 
-    private TextMeshProUGUI text;
 
     [Header("PRODUCTS")]
     public float distanceToActivateOutline = 5f;
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
                 }
             }            
         }
-        text = FindObjectOfType<TextMeshProUGUI>();
         player = GameObject.Find("PlayerKart");
     }
 
@@ -131,7 +129,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         LookForCloseProducts();
-        text.text = selectedProductsToCollect.Count.ToString();
     }
     public void LookForCloseProducts()
     {
@@ -170,6 +167,14 @@ public class GameManager : MonoBehaviour
             tmp.product = product[l];
             tmp.name = shelves[l].name + product[l].name;
 
+            foreach (Transform item in shelves[l].transform)
+            {
+                if(item.gameObject.name == "CollectItemHere")
+                {
+                    tmp.ground = item.gameObject;
+                }
+            }
+
             if (tmp.name != "_")
                 shelfAndProducts.Add(tmp);
         }
@@ -198,6 +203,7 @@ public class GameManager : MonoBehaviour
             {
                 shelfAndProducts[i].product = null;
                 shelfAndProducts[i].shelf = null;
+                Destroy(shelfAndProducts[i].ground.gameObject);
             }
         }
         for(int j = 0;  j < selectedProductsToCollect.Count; ++j)

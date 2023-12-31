@@ -1184,6 +1184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killFx: {fileID: 4267894746903071509}
+  velToKill: 0.25
+  minDistanceForArguing: 2
 --- !u!1 &3773517341540978920
 GameObject:
   m_ObjectHideFlags: 0
