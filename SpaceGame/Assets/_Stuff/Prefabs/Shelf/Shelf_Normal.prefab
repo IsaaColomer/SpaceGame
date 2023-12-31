@@ -2701,6 +2701,7 @@ GameObject:
   - component: {fileID: 8824785412400083154}
   - component: {fileID: 7889787168105764808}
   - component: {fileID: 7002956272687161911}
+  - component: {fileID: 781183508472874630}
   m_Layer: 0
   m_Name: CollectItemHere (1)
   m_TagString: CollectItemHere
@@ -2751,7 +2752,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b76091706855254a91d87446a4a8649, type: 2}
+  - {fileID: 2100000, guid: 12da7bb5443566447b70d1a4c638de11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2773,6 +2774,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &781183508472874630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5584941881693543356}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.000001, y: 3.5624518, z: 10}
+  m_Center: {x: -0.0000010988277, y: 1.7821182, z: -0.00000010622215}
 --- !u!1 &5667639817833506700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,6 +3798,7 @@ GameObject:
   - component: {fileID: 2094398492415734430}
   - component: {fileID: 2974094576418721172}
   - component: {fileID: 1743891268389950212}
+  - component: {fileID: 5994061421812995614}
   m_Layer: 0
   m_Name: CollectItemHere
   m_TagString: CollectItemHere
@@ -3826,7 +3849,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b76091706855254a91d87446a4a8649, type: 2}
+  - {fileID: 2100000, guid: 12da7bb5443566447b70d1a4c638de11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3848,6 +3871,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5994061421812995614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8289592862968409547}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.000001, y: 3.5624518, z: 10}
+  m_Center: {x: -0.0000010988277, y: 1.7821182, z: -0.00000010622215}
 --- !u!1 &8400702242451428908
 GameObject:
   m_ObjectHideFlags: 0

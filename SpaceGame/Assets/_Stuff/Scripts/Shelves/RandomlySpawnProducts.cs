@@ -19,8 +19,6 @@ public class RandomlySpawnProducts : MonoBehaviour
                 possibleSpawns.Add(p.gameObject);
             }
         }
-        Debug.Log("Total ammount of possible spawns: " + possibleSpawns.Count);
-
         for(int  i = 0; i < possibleSpawns.Count; ++i)
         {
             if(Random.Range(0,2) == 1)

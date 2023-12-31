@@ -13,15 +13,26 @@ public class ShelfAndProduct
 }
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> products = new List<GameObject>();
-    public List<GameObject> allShelves = new List<GameObject>();
-    public List<GameObject> allItemCollect = new List<GameObject>();
-    public List<GameObject> selectedProductsToCollect = new List<GameObject>();
-    [SerializeField] private List<GameObject> selectedShelves = new List<GameObject>();
-    public List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
+    [HideInInspector] public List<GameObject> products = new List<GameObject>();
+    private List<GameObject> allShelves = new List<GameObject>();
+    private List<GameObject> allItemCollect = new List<GameObject>();
+    private List<GameObject> selectedProductsToCollect = new List<GameObject>();
+    private List<GameObject> selectedShelves = new List<GameObject>();
+    private List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
+    [Header("PRODUCTS")]
+    public float distanceToActivateOutline = 5f;
     [Header("DEBUG ONLY")]
-    public List<GameObject> shelves = new List<GameObject>();
-    public List<GameObject> product = new List<GameObject>();
+    private List<GameObject> shelves = new List<GameObject>();
+    private List<GameObject> product = new List<GameObject>();
+
+    [Header("Controlls")]
+    public KeyCode interactKey;
+
+    [Header("GAMEPLAY")]
+    public float timeToDestroyProduct = 1f;
+    [HideInInspector] public float resetTimeToDestroyProduct;
+
+    private GameObject player;
 
     [HideInInspector] public int maxItemsToCollect = 8;
     private int itemCounterForSpawn = 0;
@@ -40,12 +51,16 @@ public class GameManager : MonoBehaviour
                 }
             }            
         }
+
+        player = GameObject.Find("PlayerKart");
     }
 
     private void Start()
     {
         GenerateRandomCollectLocation();
         StartCoroutine(WaitAndGetProducts());
+
+        resetTimeToDestroyProduct = timeToDestroyProduct;
     }
 
     public void GenerateRandomCollectLocation()
@@ -93,7 +108,6 @@ public class GameManager : MonoBehaviour
                     if (item2.CompareTag("Product"))
                     {
                         allProductsinThisShelf.Add(item2.gameObject);
-                        Debug.Log(item2.gameObject.name);
                     }
                 }
             }           
@@ -109,9 +123,39 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-
-        
     }
+    private void Update()
+    {
+        LookForCloseProducts();
+    }
+    public void LookForCloseProducts()
+    {
+        foreach (GameObject item in selectedProductsToCollect)
+        {
+            if(item != null)
+            {
+                if (Vector3.Distance(player.transform.position, item.transform.position) < distanceToActivateOutline)
+                {
+                    if (!item.GetComponent<Outline>().enabled)
+                    {
+                        item.GetComponent<Outline>().enabled = true;
+                    }
+
+                    Debug.DrawLine(player.transform.position, item.transform.position, Color.green);
+                }
+                else
+                {
+                    if (item.GetComponent<Outline>().enabled)
+                    {
+                        item.GetComponent<Outline>().enabled = false;
+                    }
+
+                    Debug.DrawLine(player.transform.position, item.transform.position, Color.red);
+                }
+            }                       
+        }
+    }
+
     public void CreateEachClasses()
     {
         for (int l = 0; l < shelves.Count; ++l)
@@ -123,6 +167,37 @@ public class GameManager : MonoBehaviour
 
             if (tmp.name != "_")
                 shelfAndProducts.Add(tmp);
+        }
+    }
+    public GameObject GetRelatedProduct(Transform go)
+    {
+        GameObject ret = null;
+        for(int i = 0; i < shelfAndProducts.Count; ++i)
+        {
+            if (shelfAndProducts[i].shelf == go.gameObject)
+            {
+                ret = shelfAndProducts[i].product;
+            }
+        }
+        Debug.Log(ret.name);
+        return ret;
+    }
+
+    public void ClearDestroyProductFromAllLists(GameObject g)
+    {
+        for(int i = 0; i < shelfAndProducts.Count; ++i)
+        {
+            if (shelfAndProducts[i].product == g)
+            {
+                shelfAndProducts[i].product = null;
+            }
+        }
+        for(int j = 0;  j < selectedProductsToCollect.Count; ++j)
+        {
+            if (selectedProductsToCollect[j] == g)
+            {
+                selectedProductsToCollect.RemoveAt(j);
+            }
         }
     }
 }

@@ -34,7 +34,6 @@ public class NPCManager : MonoBehaviour
     }
     public void PlayKillParticle()
     {
-        Debug.Log("Playing kill particle");
         killFx.Play();
         ShakeCamera(4f, .5f);
     }
