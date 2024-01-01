@@ -10677,6 +10677,7 @@ GameObject:
   - component: {fileID: 7862322051635417437}
   - component: {fileID: 7613939774998754846}
   - component: {fileID: 6054217865359341682}
+  - component: {fileID: 7604225399001001218}
   m_Layer: 6
   m_Name: PlayerCart
   m_TagString: Untagged
@@ -10789,6 +10790,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83fcedccb0a68c447afb06c2253c9213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionShelfRadius: 0
+  explosionForce: 0
+  cameraShakeMult: 0
+  tmp: {fileID: 0}
+--- !u!114 &7604225399001001218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325475723143421870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7f363408a3f594a939ca0a29ba9940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8710900126104433165
