@@ -10,6 +10,7 @@ public class AccelerationFeedback : MonoBehaviour
     public KeyCode accKey;
     private Animator anim;
     private GameManager gameManager;
+    private CustomEventHandler _events;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,6 +35,7 @@ public class AccelerationFeedback : MonoBehaviour
         if (isAccelerating && rb.velocity.magnitude > 1.5f && Input.GetAxis("Vertical") == 1)
         {
             anim.SetBool("Accelerate", true);
+            _events.onAccelerate?.Invoke();
         }
         else
         {
