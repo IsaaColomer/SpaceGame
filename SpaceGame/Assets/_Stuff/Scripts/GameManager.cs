@@ -229,9 +229,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(shakeTime);
         ResetIntensity();
     }
-    private void ResetIntensity()
+    public void ResetIntensity()
     {
         perlinNoise.m_AmplitudeGain = 0f;
+        perlinNoise.m_FrequencyGain = 0.16f;
     }
     #endregion
 }

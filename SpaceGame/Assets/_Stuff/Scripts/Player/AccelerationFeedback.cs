@@ -9,11 +9,17 @@ public class AccelerationFeedback : MonoBehaviour
     public bool isAccelerating;
     public KeyCode accKey;
     private Animator anim;
+    private GameManager gameManager;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = GameObject.Find("PlayerVirtualCamera").GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
         isAccelerating = false;
+    }
+    private void Start()
+    {
+        ResetVirtualCameraProperties();
     }
     private void Update()
     {
@@ -25,15 +31,17 @@ public class AccelerationFeedback : MonoBehaviour
         {
             isAccelerating = false;
         }
-        if (isAccelerating && rb.velocity.magnitude > 1f)
+        if (isAccelerating && rb.velocity.magnitude > 1.5f && Input.GetAxis("Vertical") == 1)
         {
             anim.SetBool("Accelerate", true);
-            Debug.Log("Accelerating");
         }
         else
         {
             anim.SetBool("Accelerate", false);
-            Debug.Log("Not Accelerating");
         }
+    }
+    public void ResetVirtualCameraProperties()
+    {
+        gameManager.ResetIntensity();
     }
 }
