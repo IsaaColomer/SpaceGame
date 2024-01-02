@@ -664,7 +664,7 @@ Transform:
   m_GameObject: {fileID: 371535165}
   serializedVersion: 2
   m_LocalRotation: {x: -0.11702509, y: 0.016664293, z: -0.0019739487, w: -0.9929872}
-  m_LocalPosition: {x: 1.63, y: 2.462, z: -17.869999}
+  m_LocalPosition: {x: 1.63, y: 2.462, z: -18.302105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1483,7 +1483,7 @@ Transform:
   m_GameObject: {fileID: 985054665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.63, y: 2.462, z: -17.869999}
+  m_LocalPosition: {x: 1.63, y: 2.462, z: -18.302105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   ShoulderOffset: {x: 0, y: -0.4, z: 0}
   VerticalArmLength: 1.08
   CameraSide: 1
-  CameraDistance: 5.24
+  CameraDistance: 5.672104
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 447
@@ -2287,8 +2287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
-  m_FrequencyGain: 0.16
+  m_AmplitudeGain: 0.1565595
+  m_FrequencyGain: 0.2132303
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1778486244
 PrefabInstance:
@@ -3401,21 +3401,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6054217865359341682, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: explosionForce
-      value: 1.675
-      objectReference: {fileID: 0}
-    - target: {fileID: 6054217865359341682, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: cameraShakeMult
-      value: 1.05674
-      objectReference: {fileID: 0}
-    - target: {fileID: 6054217865359341682, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: explosionShelfRadius
-      value: 4.105
-      objectReference: {fileID: 0}
     - target: {fileID: 6357567464388507534, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3466,36 +3451,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7604225399001001218, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: accKey
-      value: 304
-      objectReference: {fileID: 0}
-    - target: {fileID: 7604225399001001218, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: maxCameraDistance
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7613939774998754846, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 7613939774998754846, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: useSounds
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7613939774998754846, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: accelerationMultiplier
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8272456361618523251, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-        type: 3}
-      propertyPath: fxMaster
-      value: 
-      objectReference: {fileID: 6623503576576393360}
     - target: {fileID: 8325475723143421870, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
         type: 3}
       propertyPath: m_Name
@@ -3509,12 +3464,6 @@ PrefabInstance:
 --- !u!4 &6623503576576393358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8824119811496134721, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6623503576576393357}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &6623503576576393360 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2495696710346912990, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
     type: 3}
   m_PrefabInstance: {fileID: 6623503576576393357}
   m_PrefabAsset: {fileID: 0}

@@ -6,13 +6,14 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource fxMaster;
     private Rigidbody rb;
+    [HideInInspector] public Animator anim;
     [SerializeField] private bool enableSound;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         enableSound = true;
+        anim = GetComponent<Animator>();
     }
-
     private void Update()
     {
         if(Mathf.Abs(rb.velocity.magnitude) > 0f)
@@ -31,6 +32,7 @@ public class SoundManager : MonoBehaviour
     public void EnableMovingSound()
     {
         fxMaster.enabled = true;
+        
         enableSound = false;
     }
 }
