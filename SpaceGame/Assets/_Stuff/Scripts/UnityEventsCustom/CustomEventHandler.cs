@@ -5,6 +5,5 @@ using UnityEngine.Events;
 
 public class CustomEventHandler : MonoBehaviour
 {
-    public UnityEvent onAccelerate;
-    
+    public UnityEvent onAccelerate;    
 }
