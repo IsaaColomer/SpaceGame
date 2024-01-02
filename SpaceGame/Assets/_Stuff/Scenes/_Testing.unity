@@ -3491,6 +3491,11 @@ PrefabInstance:
       propertyPath: accelerationMultiplier
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8272456361618523251, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
+        type: 3}
+      propertyPath: fxMaster
+      value: 
+      objectReference: {fileID: 6623503576576393360}
     - target: {fileID: 8325475723143421870, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
         type: 3}
       propertyPath: m_Name
@@ -3504,6 +3509,12 @@ PrefabInstance:
 --- !u!4 &6623503576576393358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8824119811496134721, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6623503576576393357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6623503576576393360 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2495696710346912990, guid: 52c710ba0d9fd36449eddf6f3f2ac57b,
     type: 3}
   m_PrefabInstance: {fileID: 6623503576576393357}
   m_PrefabAsset: {fileID: 0}
