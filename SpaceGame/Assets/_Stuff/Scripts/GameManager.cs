@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<GameObject> products = new List<GameObject>();
     private List<GameObject> allShelves = new List<GameObject>();
     private List<GameObject> allItemCollect = new List<GameObject>();
-    [SerializeField] private List<GameObject> selectedProductsToCollect = new List<GameObject>();
+    private List<GameObject> selectedProductsToCollect = new List<GameObject>();
     private List<GameObject> selectedShelves = new List<GameObject>();
-    public List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
+    [HideInInspector] public List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
     private Canvas canvas;
     private Transform bg;
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin perlinNoise;
 
     public GameObject uiInstantiateProduct;
-    [SerializeField] private List<GameObject> uiProductsList = new List<GameObject>();
+    private List<GameObject> uiProductsList = new List<GameObject>();
     private void Awake()
     {
         allShelves = GameObject.FindGameObjectsWithTag("Shelf").ToList();
@@ -286,5 +286,19 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    // NPCS AI
+    public List<Transform> GetAllSelectedItemCollect()
+    {
+        List<Transform> list = new List<Transform>();
+        foreach(GameObject g in selectedProductsToCollect)
+        {
+            if(g.activeSelf)
+            {
+                list.Add(g.transform);
+            }
+        }
+        return list;
     }
 }

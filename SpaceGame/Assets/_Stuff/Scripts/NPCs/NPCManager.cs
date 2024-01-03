@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.AI;
+using System.Data;
 public class NPCManager : MonoBehaviour
 {
     private Animator anim;
@@ -12,14 +14,37 @@ public class NPCManager : MonoBehaviour
     // only for killing Animation
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin perlinNoise;
+    private bool shouldMove;
+    private NavMeshAgent agent;
+    public float walkDistance;
+    private GameManager gameManager;
+    private bool updateState;
+    public bool doMove; // this for inspector and to do or not all calculus and stuff
+    // die
+    // moving
+    // shouldMove -> OnlyForStart
+    // velocity
     private void Awake()
     {
         anim = GetComponent<Animator>();
         virtualCamera = GameObject.Find("PlayerVirtualCamera").GetComponent<CinemachineVirtualCamera>();
         perlinNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        agent = GetComponent<NavMeshAgent>();
+        gameManager = FindObjectOfType<GameManager>();
+        updateState = true;
     }
     private void Start()
     {
+        anim.SetBool("doMove", doMove);
+        if(!shouldMove)
+        {
+            walkDistance = 0f;
+            anim.SetBool("shouldMove", false);
+        }
+        else
+        {
+            anim.SetBool("shouldMove", true);
+        }
         ResetIntensity();
     }
     public void KillNPC()
@@ -30,6 +55,20 @@ public class NPCManager : MonoBehaviour
     {
         killFx.Play();
         ShakeCamera(4f, .5f);
+    }
+    private void Update()
+    {
+        if(agent.isOnNavMesh)
+        {
+            if(!agent.hasPath && updateState)
+            {
+                StartCoroutine(WaitAndMove());
+            }
+        }
+        if(shouldMove)
+        {
+            anim.SetFloat("velocity", anim.velocity.magnitude);
+        }
     }
     #region Shake Camera
     public void ShakeCamera(float intensity, float shakeTime)
@@ -50,5 +89,31 @@ public class NPCManager : MonoBehaviour
     public void DestroyNPC()
     {
         Destroy(this.gameObject);
+    }
+    public void AiMoveToDestination()
+    {
+        if(shouldMove)
+        {
+            anim.SetBool("moving", true);
+            anim.SetBool("shouldMove", true);
+            updateState = true;
+            List<Transform> tmpList = new List<Transform>();
+            tmpList = gameManager.GetAllSelectedItemCollect();
+            int rnd = Random.Range(0,  tmpList.Count);
+            agent.SetDestination(tmpList[rnd].position);
+        }
+    }
+    public IEnumerator WaitAndMove()
+    {
+        shouldMove = true;
+        anim.SetBool("moving", false);
+        anim.SetBool("shouldMove", false);
+        updateState = false;
+        yield return new WaitForSeconds(Random.Range(3f, 25f));
+        AiMoveToDestination();
+        shouldMove = true;
+        anim.SetBool("moving", true);
+        anim.SetBool("shouldMove", true);
+        updateState = true;
     }
 }
