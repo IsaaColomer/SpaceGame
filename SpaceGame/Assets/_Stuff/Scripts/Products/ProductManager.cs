@@ -9,6 +9,7 @@ public class ProductManager : MonoBehaviour
     private Material _mat03;
     private MeshRenderer mr;
     public Material transparent;
+    public Sprite uiSprite;
     private void Awake()
     {
         outLine = GetComponent<Outline>();

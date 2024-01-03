@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Linq;
 using System;
 using Cinemachine;
+using UnityEngine.UI;
+using TMPro;
 
 [Serializable]
 public class ShelfAndProduct
@@ -18,10 +20,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<GameObject> products = new List<GameObject>();
     private List<GameObject> allShelves = new List<GameObject>();
     private List<GameObject> allItemCollect = new List<GameObject>();
-    private List<GameObject> selectedProductsToCollect = new List<GameObject>();
+    [SerializeField] private List<GameObject> selectedProductsToCollect = new List<GameObject>();
     private List<GameObject> selectedShelves = new List<GameObject>();
     public List<ShelfAndProduct> shelfAndProducts = new List<ShelfAndProduct>();
-
+    private Canvas canvas;
+    private Transform bg;
 
     [Header("PRODUCTS")]
     public float distanceToActivateOutline = 5f;
@@ -45,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin perlinNoise;
+
+    public GameObject uiInstantiateProduct;
     private void Awake()
     {
         allShelves = GameObject.FindGameObjectsWithTag("Shelf").ToList();
@@ -61,12 +66,16 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("PlayerKart");
         virtualCamera = GameObject.Find("PlayerVirtualCamera").GetComponent<CinemachineVirtualCamera>();
         perlinNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        canvas = FindObjectOfType<Canvas>();
+        bg = GameObject.Find("BgPostit").GetComponent<Transform>();
     }
 
     private void Start()
     {
         GenerateRandomCollectLocation();
         StartCoroutine(WaitAndGetProducts());
+        StartCoroutine(WaitAndFillUI());
+        
 
         resetTimeToDestroyProduct = timeToDestroyProduct;
     }
@@ -235,4 +244,28 @@ public class GameManager : MonoBehaviour
         perlinNoise.m_FrequencyGain = 0.16f;
     }
     #endregion
+
+    public IEnumerator WaitAndFillUI()
+    {
+        yield return new WaitForSeconds(2f);
+        GenerateUiProducts();
+    }
+
+    public void GenerateUiProducts()
+    {
+        
+        int h = 0;
+        foreach (GameObject g in selectedProductsToCollect)
+        {
+            
+            GameObject go = Instantiate(uiInstantiateProduct, Vector3.zero, Quaternion.identity, bg);
+            //Vector3 asd = new Vector3(0f, h * 2.25f, 0f);
+            go.GetComponent<Transform>().position = new Vector3(0, 0f, 0f);
+            go.GetComponent<Transform>().localPosition = new Vector3(0, -h*10f, 0f);
+            go.GetComponent<Transform>().localScale = Vector3.one;
+            go.GetComponentInChildren<Image>().sprite = g.GetComponent<ProductManager>().uiSprite;
+            go.GetComponentInChildren<TextMeshProUGUI>().text =" ";
+            h++;
+        }
+    }
 }

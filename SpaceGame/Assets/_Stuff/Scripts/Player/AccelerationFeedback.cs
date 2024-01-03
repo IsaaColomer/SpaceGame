@@ -16,6 +16,7 @@ public class AccelerationFeedback : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GameObject.Find("PlayerVirtualCamera").GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
+        _events = FindObjectOfType<CustomEventHandler>();
         isAccelerating = false;
     }
     private void Start()
@@ -34,12 +35,12 @@ public class AccelerationFeedback : MonoBehaviour
         }
         if (isAccelerating && rb.velocity.magnitude > 1.5f && Input.GetAxis("Vertical") == 1)
         {
-            anim.SetBool("Accelerate", true);
+            //anim.SetBool("Accelerate", true);
             _events.onAccelerate?.Invoke();
         }
         else
         {
-            anim.SetBool("Accelerate", false);
+            //anim.SetBool("Accelerate", false);
         }
     }
     public void ResetVirtualCameraProperties()

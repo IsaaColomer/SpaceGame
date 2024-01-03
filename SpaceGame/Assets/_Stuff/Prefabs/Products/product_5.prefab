@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transparent: {fileID: 2100000, guid: ddd6a81df075a374185a4b2bbf97a0d1, type: 2}
+  uiSprite: {fileID: 21300000, guid: c31856365ea7bdf4485343279e180344, type: 3}
 --- !u!54 &3932335265541150215
 Rigidbody:
   m_ObjectHideFlags: 0
