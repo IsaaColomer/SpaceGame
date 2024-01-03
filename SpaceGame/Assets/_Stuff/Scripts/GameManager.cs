@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
             GameObject go = Instantiate(uiInstantiateProduct, Vector3.zero, Quaternion.identity, bg);
             //Vector3 asd = new Vector3(0f, h * 2.25f, 0f);
             go.GetComponent<Transform>().position = new Vector3(0, 0f, 0f);
-            go.GetComponent<Transform>().localPosition = new Vector3(0, -h*10f, 0f);
+            go.GetComponent<Transform>().localPosition = new Vector3(0, 0f, 0f);
             go.GetComponent<Transform>().localScale = Vector3.one;
             go.GetComponentInChildren<Image>().sprite = g.GetComponent<ProductManager>().uiSprite;
             go.GetComponentInChildren<TextMeshProUGUI>().text =" ";
