@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin perlinNoise;
 
     public GameObject uiInstantiateProduct;
+    [SerializeField] private List<GameObject> uiProductsList = new List<GameObject>();
     private void Awake()
     {
         allShelves = GameObject.FindGameObjectsWithTag("Shelf").ToList();
@@ -210,7 +211,8 @@ public class GameManager : MonoBehaviour
 
     public void ClearDestroyProductFromAllLists(GameObject g)
     {
-        for(int i = 0; i < shelfAndProducts.Count; ++i)
+        CheckAndDeleteUiProduct(g);
+        for (int i = 0; i < shelfAndProducts.Count; ++i)
         {
             if (shelfAndProducts[i].product == g)
             {
@@ -226,6 +228,7 @@ public class GameManager : MonoBehaviour
                 selectedProductsToCollect.RemoveAt(j);
             }
         }
+        
     }
     #region Shake Camera
     public void ShakeCamera(float intensity, float shakeTime)
@@ -265,7 +268,23 @@ public class GameManager : MonoBehaviour
             go.GetComponent<Transform>().localScale = Vector3.one;
             go.GetComponentInChildren<Image>().sprite = g.GetComponent<ProductManager>().uiSprite;
             go.GetComponentInChildren<TextMeshProUGUI>().text =" ";
+            go.GetComponent<UiProduct>().relatedGo = g;
+            uiProductsList.Add(go);
             h++;
+        }
+    }
+    public void CheckAndDeleteUiProduct(GameObject go)
+    {
+        foreach (GameObject g in uiProductsList)
+        {
+            if(g.GetComponent<UiProduct>().relatedGo == go)
+            {
+                GameObject pendingToDelete = g;
+                
+                Destroy(g);
+                uiProductsList.Remove(pendingToDelete);
+                break;
+            }
         }
     }
 }

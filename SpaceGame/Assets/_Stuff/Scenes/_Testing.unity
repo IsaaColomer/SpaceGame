@@ -1105,7 +1105,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &611043504
 Transform:
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   collectedItemsAmmount: 0
   uiInstantiateProduct: {fileID: 5728881328732908007, guid: da471c6c1c66f864494d7bc1b1a29c6c,
     type: 3}
+  uiProductsList: []
 --- !u!1001 &696062177
 PrefabInstance:
   m_ObjectHideFlags: 0
