@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     private Canvas canvas;
     private Transform bg;
 
+    // Canvas
+    private GameObject winScreen;
+    private Animator canvasAnimator;
+
     [Header("PRODUCTS")]
     public float distanceToActivateOutline = 5f;
     [Header("DEBUG ONLY")]
@@ -69,6 +73,9 @@ public class GameManager : MonoBehaviour
         perlinNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         canvas = FindObjectOfType<Canvas>();
         bg = GameObject.Find("BgPostit").GetComponent<Transform>();
+        winScreen = GameObject.Find("WinScreen");
+        canvasAnimator = GameObject.Find("Canvas").GetComponent<Animator>();
+
     }
 
     private void Start()
@@ -77,6 +84,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitAndGetProducts());
         StartCoroutine(WaitAndFillUI());
         
+        winScreen.SetActive(false);
 
         resetTimeToDestroyProduct = timeToDestroyProduct;
     }
@@ -279,8 +287,18 @@ public class GameManager : MonoBehaviour
                 
                 Destroy(g);
                 uiProductsList.Remove(pendingToDelete);
+                CheckIfGameIsDone();
                 break;
             }
+        }
+    }
+
+    public void CheckIfGameIsDone()
+    {
+        if(uiProductsList.Count == 0) // im doing this depending on the ui list because im confident this will always work (it wont)
+        {
+            winScreen.SetActive(true);
+            canvasAnimator.Play("WinAnimation");
         }
     }
 
