@@ -158,8 +158,6 @@ public class GameManager : MonoBehaviour
                     {
                         item.GetComponent<Outline>().enabled = true;
                     }
-
-                    Debug.DrawLine(player.transform.position, item.transform.position, Color.green);
                 }
                 else
                 {
@@ -167,8 +165,6 @@ public class GameManager : MonoBehaviour
                     {
                         item.GetComponent<Outline>().enabled = false;
                     }
-
-                    Debug.DrawLine(player.transform.position, item.transform.position, Color.red);
                 }
             }                       
         }

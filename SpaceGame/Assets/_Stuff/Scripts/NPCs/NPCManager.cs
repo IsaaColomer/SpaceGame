@@ -24,6 +24,7 @@ public class NPCManager : MonoBehaviour
     // moving
     // shouldMove -> OnlyForStart
     // velocity
+    // isSilly
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -62,7 +63,8 @@ public class NPCManager : MonoBehaviour
         {
             if(!agent.hasPath && updateState)
             {
-                StartCoroutine(WaitAndMove());
+                if(doMove)
+                    StartCoroutine(WaitAndMove());
             }
         }
         if(shouldMove)
@@ -92,28 +94,44 @@ public class NPCManager : MonoBehaviour
     }
     public void AiMoveToDestination()
     {
-        if(shouldMove)
-        {
-            anim.SetBool("moving", true);
-            anim.SetBool("shouldMove", true);
-            updateState = true;
-            List<Transform> tmpList = new List<Transform>();
-            tmpList = gameManager.GetAllSelectedItemCollect();
-            int rnd = Random.Range(0,  tmpList.Count);
-            agent.SetDestination(tmpList[rnd].position);
-        }
+            if (shouldMove)
+            {
+                anim.SetBool("moving", true);
+                anim.SetBool("shouldMove", true);
+                updateState = true;
+                List<Transform> tmpList = new List<Transform>();
+                tmpList = gameManager.GetAllSelectedItemCollect();
+                int rnd = Random.Range(0, tmpList.Count);
+                agent.SetDestination(tmpList[rnd].position);
+            }     
     }
     public IEnumerator WaitAndMove()
     {
-        shouldMove = true;
-        anim.SetBool("moving", false);
-        anim.SetBool("shouldMove", false);
-        updateState = false;
-        yield return new WaitForSeconds(Random.Range(3f, 25f));
-        AiMoveToDestination();
-        shouldMove = true;
-        anim.SetBool("moving", true);
-        anim.SetBool("shouldMove", true);
-        updateState = true;
+            shouldMove = true;
+            anim.SetBool("moving", false);
+            anim.SetBool("shouldMove", false);
+            anim.SetBool("isSilly", false);
+            updateState = false;
+
+            yield return new WaitForSeconds(Random.Range(3f, 25f));
+            AiMoveToDestination();
+            shouldMove = true;
+
+            anim.SetBool("isSilly", RandomBoolean());
+            anim.SetBool("moving", true);
+            anim.SetBool("shouldMove", true);
+            updateState = true;
+           
+    }
+    public bool RandomBoolean()
+    {
+        if(Random.Range(0, 2) == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
