@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         LookForCloseProducts();
+        CheckIfQuitGame();
     }
     public void LookForCloseProducts()
     {
@@ -314,5 +315,14 @@ public class GameManager : MonoBehaviour
             }
         }
         return list;
+    }
+
+
+    public void CheckIfQuitGame()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
