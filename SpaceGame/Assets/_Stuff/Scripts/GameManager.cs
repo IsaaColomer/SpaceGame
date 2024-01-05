@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitAndFillUI());
         
         winScreen.SetActive(false);
-
         resetTimeToDestroyProduct = timeToDestroyProduct;
     }
 
@@ -165,14 +164,14 @@ public class GameManager : MonoBehaviour
                 {
                     if (!item.GetComponent<Outline>().enabled)
                     {
-                        item.GetComponent<Outline>().enabled = true;
+                        //item.GetComponent<Outline>().enabled = true;
                     }
                 }
                 else
                 {
                     if (item.GetComponent<Outline>().enabled)
                     {
-                        item.GetComponent<Outline>().enabled = false;
+                        //item.GetComponent<Outline>().enabled = false;
                     }
                 }
             }                       

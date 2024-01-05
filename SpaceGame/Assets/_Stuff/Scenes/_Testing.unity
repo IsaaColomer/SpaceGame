@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1379869697}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44648796, g: 0.49640262, b: 0.57479304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1243,6 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b0aa379831f7647b6a5cdfffa7931b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dynamicShelvesLst: []
   products:
   - {fileID: 7068399233604147542, guid: e491666edc6759e448c7e44c6cca012a, type: 3}
   - {fileID: 1194802749932750939, guid: 5548bf83459f0b542880d23c3f210638, type: 3}

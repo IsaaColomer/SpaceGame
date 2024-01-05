@@ -88,6 +88,10 @@ public class CollisionController : MonoBehaviour
             if (gameManager.GetRelatedProduct(other.transform.parent) != null)
             {
                 tmp = gameManager.GetRelatedProduct(other.transform.parent);
+                if(tmp.GetComponent<Outline>() != null)
+                {
+                    tmp.GetComponent<Outline>().enabled = true;
+                }
             }
         }
     }
@@ -104,6 +108,10 @@ public class CollisionController : MonoBehaviour
         {
             isInTrigger = false;
             gameManager.timeToDestroyProduct = gameManager.resetTimeToDestroyProduct;
+            if (tmp.GetComponent<Outline>() != null)
+            {
+                tmp.GetComponent<Outline>().enabled = false;
+            }
             tmp = null;
         }
     }
