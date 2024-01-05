@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
-    [HideInInspector] public int maxItemsToCollect = 8;
+    public int maxItemsToCollect = 100;
     private int itemCounterForSpawn = 0;
     [HideInInspector] public int collectedItemsTrueAmmount = 0;
     [HideInInspector] public int collectedItemsAmmount = 0;

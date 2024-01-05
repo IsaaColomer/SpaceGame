@@ -1,11 +1,8 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.AI;
-using System.Data;
 public class NPCManager : MonoBehaviour
 {
     private Animator anim;
@@ -101,9 +98,17 @@ public class NPCManager : MonoBehaviour
             updateState = true;
             List<Transform> tmpList = new List<Transform>();
             tmpList = gameManager.GetAllSelectedItemCollect();
-            int rnd = Random.Range(0, tmpList.Count-1);
-            GameObject go = tmpList[rnd].gameObject;
-            agent.SetDestination(go.transform.position);
+            int rnd = Random.Range(0, tmpList.Count+1);
+            if(tmpList[rnd].gameObject != null)
+            {
+                GameObject go = tmpList[rnd].gameObject;
+                agent.SetDestination(go.transform.position);                
+            }
+            else
+            {
+                Debug.Log("This was the generated random number " + rnd + " which means this object " + tmpList[rnd].gameObject.name);
+            }
+            
         }     
     }
     public IEnumerator WaitAndMove()
