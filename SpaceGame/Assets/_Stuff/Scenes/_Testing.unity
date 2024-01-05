@@ -1243,7 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b0aa379831f7647b6a5cdfffa7931b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamicShelvesLst: []
   products:
   - {fileID: 7068399233604147542, guid: e491666edc6759e448c7e44c6cca012a, type: 3}
   - {fileID: 1194802749932750939, guid: 5548bf83459f0b542880d23c3f210638, type: 3}
@@ -1251,6 +1250,10 @@ MonoBehaviour:
   - {fileID: 469265919480392520, guid: 1d5429530c1f292459cdd8fae9ac4f3e, type: 3}
   - {fileID: 5075193779577675251, guid: bfe552190756d094f82c486f4690e24d, type: 3}
   - {fileID: 1961465330170583945, guid: 8ad44dcae4e973e4f942212155d2663b, type: 3}
+  allShelves: []
+  allItemCollect: []
+  selectedProductsToCollect: []
+  selectedShelves: []
   shelfAndProducts: []
   distanceToActivateOutline: 2.75
   interactKey: 101

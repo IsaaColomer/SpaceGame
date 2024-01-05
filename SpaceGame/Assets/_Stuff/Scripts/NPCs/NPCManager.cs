@@ -101,7 +101,7 @@ public class NPCManager : MonoBehaviour
             updateState = true;
             List<Transform> tmpList = new List<Transform>();
             tmpList = gameManager.GetAllSelectedItemCollect();
-            int rnd = Random.Range(0, tmpList.Count);
+            int rnd = Random.Range(0, tmpList.Count-1);
             GameObject go = tmpList[rnd].gameObject;
             agent.SetDestination(go.transform.position);
         }     
