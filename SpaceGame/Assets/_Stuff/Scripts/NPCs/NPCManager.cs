@@ -34,7 +34,7 @@ public class NPCManager : MonoBehaviour
     private void Start()
     {
         anim.SetBool("doMove", doMove);
-        if(!shouldMove)
+        if(!doMove)
         {
             walkDistance = 0f;
             anim.SetBool("shouldMove", false);
